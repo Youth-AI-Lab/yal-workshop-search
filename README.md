@@ -5,6 +5,7 @@
 - **Project:** Youth AI Lab (Erasmus+), with five partners: L.A.B. (Aix-en-Provence, France),
   UAB (Barcelona, Spain), Perlatecnica (Naples, Italy), Digitale Wolven (Antwerp, Belgium),
   CSC Vent des Îles (La Rochelle, France).
+- **The series:** [the five workshops](https://github.com/Youth-AI-Lab/yal-workshop-kit#the-series)
 - **Need help?**
   - Raise your hand and ask the facilitator.
   - If something breaks, don't panic: your files stay in the Codespace.
@@ -577,6 +578,9 @@ every answer, and what only for one kind of request?)
    1. In mode C, who decides what the model reads, and how can you check it?
    2. Why is a person's name, and not the model's, in the `verified` line of a summary?
    3. When does the model open a skill?
+
+**Next:** [Workshop 4 - Plug in tools](https://github.com/Youth-AI-Lab/yal-workshop-tools). Open its own Codespace from that page, and
+bring `my-work.zip`.
 
 ---
 

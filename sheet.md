@@ -45,7 +45,7 @@ Full page: [README.md](README.md). Setup and common problems: [SETUP.md](SETUP.m
 
 1. `replay C`, then `score C 3 11 12`. Compare with columns B and RAG.
 2. Terminal 2: `openwebui chatbot --name "<your chatbot>"` → ask your question 12.
-3. `workshop-save` → right-click on `my-work.zip` → **Download**. Bring it to workshop 4.
+3. `workshop-save` → right-click on `my-work.zip` → **Download...**. Bring it to [workshop 4](https://github.com/Youth-AI-Lab/yal-workshop-tools).
 4. Exit card: three answers, alone.
 
 **Leave a conversation:** `Ctrl+C` twice. **Copy / paste in the terminal:** `Ctrl+Shift+C` /
