@@ -53,7 +53,9 @@ the chatbot says about it. The question of the day is:
 | **Create** | 4 | Write a **skill**, a procedure the model follows when a request matches it, and test when it triggers. | `C` |
 
 All session long, you go on testing your chatbot with the same questions: today, column **C**,
-with questions 3, 11 and 12.
+with questions 3, 11 and 12, and question 8 for workshop 4. The scores stay the same: **2** right
+and sourced, **1** honest but not enough, **0** wrong or invented
+([test-questions.md, How to score](test-questions.md#how-to-score)).
 
 ### Why this approach?
 
@@ -92,8 +94,8 @@ The series goes on, one piece of the chatbot at a time:
 your question 12 and your scores. Without it, the kit's example (Feurisson) becomes your system
 prompt. **Bring also the address of the official page of your question 12**: in Part 3, it enters
 your chatbot. No question 12 yet? Write one at the start of Part 3 (`test-questions.md`, section
-"Question 12: your territory"), or curate the document of Benevento and score questions 3 and 11
-only. More in [SETUP.md, Before you start](SETUP.md#before-you-start).
+"Question 12: your territory"), or curate the document of Benevento and score questions 3, 8 and
+11 only. More in [SETUP.md, Before you start](SETUP.md#before-you-start).
 
 ### Reference documents
 
@@ -132,14 +134,18 @@ second terminal.
 
 ### Step 2 - Bring back your work
 
-1. **Drag `my-work.zip`** from your computer into the file list of the Codespace.
+1. **Drag `my-work.zip`** from your computer into the file list of the Codespace. If you
+   downloaded it more than once, your browser may have named the newest one `my-work (1).zip`:
+   drag that one, and type its exact name between quotes, for example
+   `workshop-start 3 --from "my-work (1).zip"`.
 2. In your first terminal, type:
 
    ```bash
    workshop-start 3 --from my-work.zip
    ```
 
-   Without a save, type `workshop-start 3`. You should see your files restored, then:
+   You should see `Restored from my-work.zip (saved on …)`: check that this date is the end of
+   workshop 2. Then you should see the list of your restored files, and:
 
    ```
    Prepared for this workshop:
@@ -150,8 +156,13 @@ second terminal.
    First command: workshop C
    ```
 
-   Without a save, the "Prepared" line says instead that `AGENTS.md` is now a copy of the Feurisson
-   example.
+   Without a save, type `workshop-start 3`: the "Prepared" line then says that `AGENTS.md` is now a
+   copy of the Feurisson example.
+
+> ℹ️ **Note.** **The first time you type `workshop C`** in this Codespace, Claude Code asks again
+> whether you trust the folder. The choice proposed is `No, exit`: press the **down arrow** to choose
+> `Yes, I trust this folder`, then **Enter**. If Claude Code closed, type `workshop C` again. More in
+> [SETUP.md, step 4](SETUP.md#step-4---your-first-conversation).
 
 ### Step 3 - Start Open WebUI in the background
 
@@ -541,7 +552,8 @@ every answer, and what only for one kind of request?)
 
 ### Step 1 - Replay and score column C
 
-1. In your first terminal, replay the test set in mode C:
+1. **Predict** on paper: which of questions 3, 11 and 12 will go up from column B to column C?
+2. In your first terminal, replay the test set in mode C:
 
    ```bash
    replay C
@@ -550,13 +562,16 @@ every answer, and what only for one kind of request?)
    Under each answer, the line `What the model did:` lists what it read, searched and used, for
    example `used the skill rumour-check`. In our test on 2026-10-30, with the 11 questions of the
    kit (no question 12): 1 min 42 and $0.30.
-2. Score only the three questions of today, with the help of the judge:
+3. Score the questions of today, and question 8, which workshop 4 compares with its tool, with the
+   help of the judge (no question 12: `score C 3 8 11`):
 
    ```bash
-   score C 3 11 12
+   score C 3 8 11 12
    ```
 
-3. **Compare column C** with columns B and RAG, for questions 3, 11 and 12.
+4. **Compare column C** with columns B and RAG in `scores.md`, for questions 3, 11 and 12, and with
+   your prediction. Today only some questions are scored, so **the Total row means nothing here**:
+   read the rows. Without a save, there are no columns B and RAG: compare with a neighbouring pair.
 
 ### Step 2 - Your chatbot in Open WebUI
 
@@ -567,8 +582,8 @@ every answer, and what only for one kind of request?)
    openwebui chatbot --name "Feurisson"
    ```
 
-2. Open the address, choose your chatbot, and ask your question 12. Under the answer, it now has
-   your documents, and it searches them itself.
+2. Open the address, choose your chatbot, and ask your question 12. Your chatbot now has your
+   documents, and it searches them itself.
 
 ### Step 3 - Save your work, fill in the exit card
 
@@ -577,13 +592,17 @@ every answer, and what only for one kind of request?)
 
    ![1: my-work.zip in the file list. 2: the item Download... of the menu that opens with a right-click.](images/download-zip.png)
 
+   If your computer already has a `my-work.zip`, the new one may be called `my-work (1).zip`:
+   bring the newest.
+
 2. Answer on the card of the facilitator, alone, in a few words:
    1. In mode C, who decides what the model reads, and how can you check it?
    2. Why is a person's name, and not the model's, in the `verified` line of a summary?
    3. When does the model open a skill?
 
 **Next:** [Workshop 4 - Plug in tools](https://github.com/Youth-AI-Lab/yal-workshop-tools). Open its own Codespace from that page, and
-bring `my-work.zip`.
+bring `my-work.zip`. Bring also the address of the official page that gives the fire danger level
+of your territory, if it has one: in workshop 4, it goes into the tool's file.
 
 ---
 

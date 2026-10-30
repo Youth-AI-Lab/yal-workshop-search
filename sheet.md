@@ -14,13 +14,17 @@ Full page: [README.md](README.md). Setup and common problems: [SETUP.md](SETUP.m
 1. Idle timeout not set yet on this account? First: [SETUP.md, step 1](SETUP.md#step-1---let-the-codespace-wait-for-you).
 2. Open the Codespace: **https://codespaces.new/Youth-AI-Lab/yal-workshop-search** → **Create codespace**.
 3. Terminal 1: `workshop-login`, paste the key once, Enter → you see `Key OK`.
-4. Drag `my-work.zip` into the file list. Terminal 1: `workshop-start 3 --from my-work.zip`.
+4. Drag `my-work.zip` into the file list (the newest: maybe `my-work (1).zip`, then its exact name
+   between quotes). Terminal 1: `workshop-start 3 --from my-work.zip` → check the `saved on` date:
+   the end of workshop 2.
 5. Terminal 2: `openwebui start`. Do not wait: it ends by itself.
 
 ## 2. Let it search (20 min)
 
-1. `workshop C`, then question 3: **Ctrl+O** to see each step (again to come back). Look at the gauge.
-2. Question 7: which documents does it find? What does it say? `Ctrl+C` twice.
+1. `workshop C`. First time: keep the theme (Enter); to trust the folder, **down arrow** to
+   `Yes, I trust this folder`, Enter (Enter alone closes it: type `workshop C` again).
+2. Question 3: **Ctrl+O** to see each step (again to come back). Look at the gauge.
+3. Question 7: which documents does it find? What does it say? `Ctrl+C` twice.
 
 ## 3. Let a document in (35 min)
 
@@ -44,9 +48,11 @@ Full page: [README.md](README.md). Setup and common problems: [SETUP.md](SETUP.m
 
 ## 5. Closing (10 min)
 
-1. `replay C`, then `score C 3 11 12`. Compare with columns B and RAG.
+1. Predict: which of 3, 11, 12 go up from B to C? `replay C`, then `score C 3 8 11 12` (8 is
+   for workshop 4). Compare the rows with columns B and RAG: the Total row means nothing today.
 2. Terminal 2: `openwebui chatbot --name "<your chatbot>"` → ask your question 12.
-3. `workshop-save` → right-click on `my-work.zip` → **Download...**. Bring it to [workshop 4](https://github.com/Youth-AI-Lab/yal-workshop-tools).
+3. `workshop-save` → right-click on `my-work.zip` → **Download...**. Bring it to [workshop 4](https://github.com/Youth-AI-Lab/yal-workshop-tools)
+   (maybe `my-work (1).zip`: the newest), with the address of the fire danger page of your territory.
 4. Exit card: three answers, alone.
 
 **Leave a conversation:** `Ctrl+C` twice. **Copy / paste in the terminal:** `Ctrl+Shift+C` /
