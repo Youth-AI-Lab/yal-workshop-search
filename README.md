@@ -505,8 +505,9 @@ it, the **steps**, and what the model must **never** do.
    requests again, until the skill triggers when it should, and only when it should.
 5. Leave with **Ctrl+C twice**: Part 5 starts in the terminal.
 
-In a local test on 2026-10-22, a rumour used `rumour-check` and got an answer with its source;
-"Hello, who are you?" used no skill.
+In a real Codespace on 2026-10-30, this rumour used `rumour-check` twice out of two (`● Skill(rumour-check)`,
+then a search in the documents), and "Hello, who are you?" used no skill. Each test filled about
+11,000 to 12,000 tokens of the window.
 
 > 💡 **Tip.** **Checkpoint**: your `SKILL.md` exists, it triggers on one request, and not on
 > "Hello, who are you?".
