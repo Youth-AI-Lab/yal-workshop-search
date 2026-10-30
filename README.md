@@ -227,8 +227,8 @@ step is shown.
    ![The same answer after Ctrl+O. 1: the search, with the word searched and the files found. 2: the file read. 3: the line that says how to come back, ctrl+o to toggle.](images/steps-expanded.png)
 3. Look at the gauge. In our test on 2026-10-30, the model searched with `grep` in `summaries/`
    and `corpus/`, read the summary of Bouches-du-Rhône, then the full order in `corpus/text/`,
-   without asking any permission, and the gauge showed about **23,000 tokens**, against 100,000 in
-   mode B. Your steps may differ: the model decides each time.
+   without asking any permission, and the gauge showed about **23,000 tokens**. In mode B it was about 100,000
+   (measured after question 10): the whole kit is in the window, whatever the question. Your steps may differ: the model decides each time.
 
 #### Step 3 - Question 7: an answer that exists nowhere
 
