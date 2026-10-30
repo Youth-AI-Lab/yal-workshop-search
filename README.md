@@ -220,7 +220,11 @@ step is shown.
 2. Above the answer, a grey line sums up the steps, for example `Searched for 1 pattern, read 2
    files`. Press **Ctrl+O** (also on a Mac) to see each step: which word it searched, which files
    it opened. The screen then says `Showing detailed transcript · ctrl+o to toggle`: **Ctrl+O**
-   again brings you back to the conversation.
+   again brings you back to the conversation. Here with another question:
+
+   ![The answer to another question, "Which documents talk about Flanders?". In the red frame, the grey line that sums up the steps: Searched for 1 pattern, read 1 file.](images/steps-collapsed.png)
+
+   ![The same answer after Ctrl+O. 1: the search, with the word searched and the files found. 2: the file read. 3: the line that says how to come back, ctrl+o to toggle.](images/steps-expanded.png)
 3. Look at the gauge. In our test on 2026-10-30, the model searched with `grep` in `summaries/`
    and `corpus/`, read the summary of Bouches-du-Rhône, then the full order in `corpus/text/`,
    without asking any permission, and the gauge showed about **23,000 tokens**, against 100,000 in
@@ -469,9 +473,13 @@ Choose one of these ideas, or one of your own:
 | `translate-summary` | translates a summary, keeps the figures, and marks the result as a draft to check | The Data Box |
 | `press-questions` | prepares test questions in the categories of `test-questions.md`, each with its expected answer and source | The Press Conference |
 
-Here is a complete example. In the file list, open the folder `.claude`, right-click on `skills`,
-then **New Folder…**, and name it `rumour-check`. Right-click on this new folder, then **New
-File…**, and name it `SKILL.md` (in capitals). Paste this text in it, and save (`Ctrl+S`):
+Here is a complete example. In the file list, find the line `.claude / skills` (VS Code shows the
+two folders on one line), right-click on the word `skills`, then **New Folder...**, and name it
+`rumour-check`.
+
+![1: the line .claude / skills of the file list, right-click on skills. 2: the item New Folder... of the menu.](images/new-file-skill.png)
+
+Then right-click on this new folder, then **New File...**, and name it `SKILL.md` (in capitals). Paste this text in it, and save (`Ctrl+S`):
 
 ```markdown
 ---
@@ -560,8 +568,11 @@ every answer, and what only for one kind of request?)
 
 ### Step 3 - Save your work, fill in the exit card
 
-1. Type `workshop-save`, then right-click on `my-work.zip` → **Download**. It holds your documents,
+1. Type `workshop-save`, then right-click on `my-work.zip` → **Download...**. It holds your documents,
    your summary and your skill. Bring it to workshop 4.
+
+   ![1: my-work.zip in the file list. 2: the item Download... of the menu that opens with a right-click.](images/download-zip.png)
+
 2. Answer on the card of the facilitator, alone, in a few words:
    1. In mode C, who decides what the model reads, and how can you check it?
    2. Why is a person's name, and not the model's, in the `verified` line of a summary?
