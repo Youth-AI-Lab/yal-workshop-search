@@ -18,7 +18,7 @@ Full page: [README.md](README.md). Setup and common problems: [SETUP.md](SETUP.m
 
 ## 2. Let it search (20 min)
 
-1. `workshop C`, then question 3: click the grey line to see each step. Look at the gauge.
+1. `workshop C`, then question 3: **Ctrl+O** to see each step (again to come back). Look at the gauge.
 2. Question 7: which documents does it find? What does it say? `Ctrl+C` twice.
 
 ## 3. Let a document in (35 min)

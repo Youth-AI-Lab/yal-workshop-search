@@ -217,8 +217,10 @@ step is shown.
 1. Open `test-questions.md`, copy question 3, and paste it in the conversation with
    `Ctrl+Shift+V` (`Cmd+V` on a Mac). It is about the access to forest massifs in Bouches-du-Rhône.
    Its answer is **not in the summaries**: only in the full text of an order.
-2. Above the answer, a grey line sums up the steps, for example `Read 4 files, ran 1 shell
-   command`. **Click on it** to see each step: which word it searched, which files it opened.
+2. Above the answer, a grey line sums up the steps, for example `Searched for 1 pattern, read 2
+   files`. Press **Ctrl+O** (also on a Mac) to see each step: which word it searched, which files
+   it opened. The screen then says `Showing detailed transcript · ctrl+o to toggle`: **Ctrl+O**
+   again brings you back to the conversation.
 3. Look at the gauge. In our test on 2026-10-30, the model searched with `grep` in `summaries/`
    and `corpus/`, read the summary of Bouches-du-Rhône, then the full order in `corpus/text/`,
    without asking any permission, and the gauge showed about **23,000 tokens**, against 100,000 in
@@ -338,8 +340,8 @@ summary is optional today: the model can read the readable copy itself. So **do 
    ```
 
 2. Look for the line `Skill(summarize)`: the model opened the skill, because your request matched
-   its description. Click the grey line of its steps: does it read `corpus/text/81-…md`, and not the
-   original, as the skill says?
+   its description. Press **Ctrl+O** to see its steps: does it read `corpus/text/81-…md`, and not the
+   original, as the skill says? **Ctrl+O** again to come back.
 3. Accept each file it wants to write (**1. Yes**). You can already read the summary there.
 
 You should get two files, and a line in `summaries/index.md` marked "(draft, not verified)":
@@ -396,8 +398,8 @@ of row you check first.
    verified)" to "(human-reviewed)".
 2. Leave with **Ctrl+C twice**: this conversation has just read your document, so it would answer
    from memory.
-3. Start `workshop C` again and ask your question 12 in this new conversation. Click the grey line:
-   does it open `summaries/81-…` or `corpus/text/81-…`? Leave with **Ctrl+C twice**.
+3. Start `workshop C` again and ask your question 12 in this new conversation. Press **Ctrl+O**:
+   does it open `summaries/81-…` or `corpus/text/81-…`? **Ctrl+O** again, then leave with **Ctrl+C twice**.
 
 > 💡 **Tip.** **Checkpoint**: `corpus/80-…` and `corpus/81-…` exist, and `summaries/index.md` says
 > "(human-reviewed)" for your summary.
