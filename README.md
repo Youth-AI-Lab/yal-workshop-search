@@ -52,9 +52,10 @@ the chatbot says about it. The question of the day is:
 | **Analyse** | 3 | Check a summary written by the model against the original document, sentence by sentence, and decide what to correct. | `C` |
 | **Create** | 4 | Write a **skill**, a procedure the model follows when a request matches it, and test when it triggers. | `C` |
 
-All session long, you go on testing your chatbot with the same questions: today, column **C**,
-with questions 3, 11 and 12, and question 8 for workshop 4. The scores stay the same: **2** right
-and sourced, **1** honest but not enough, **0** wrong or invented
+All session long, you go on testing your chatbot with the same questions. Today you fill column
+**C** of `scores.md`, for questions 3, 11 and 12, and question 8 for workshop 4:
+[Part 5](#part-5---closing-10-min) says what each one puts to the test. The scores stay the same:
+**2** right and sourced, **1** honest but not enough, **0** wrong or invented
 ([test-questions.md, How to score](test-questions.md#how-to-score)).
 
 ### Why this approach?
@@ -62,7 +63,7 @@ and sourced, **1** honest but not enough, **0** wrong or invented
 Mode B paid for everything at every message. A RAG always gave pieces, even when the answer was
 not in them. In mode C, **nothing is loaded in advance**: the model knows where the knowledge is,
 in two folders that each have an index, and it searches like a person would. When a search finds
-nothing, the model sees zero results, and it can say "I don't know".
+nothing, or nothing that answers, the model sees it, and it can say "I don't know".
 
 Then comes the part that tools do not do for you: **curation**. A person decides which document
 enters the knowledge, checks the summary that the model writes of it, and signs it with their
@@ -179,8 +180,9 @@ takes a few minutes: start it now.
 2. Do not wait for it: go on with Part 2 in your first terminal. It ends with
    `Open WebUI is ready, …`.
 
-> 🚫 **Warning.** **Never make port 3000 public** (Ports tab, Port Visibility). This Open WebUI has
-> no accounts: anyone with the link could use your key.
+> 🚫 **Warning.** **Never make port 3000 public** (Ports tab, Port Visibility). It is the numbered
+> door through which you reach Open WebUI. This Open WebUI has no accounts: anyone with the link
+> could use your key.
 
 > 💡 **Tip.** **Checkpoint**: `Key OK`, `Ready for workshop 3`, and `openwebui start` running in the
 > second terminal.
@@ -198,9 +200,17 @@ the gauge with mode B.
   step in the conversation.
 - **Tools that read**: list a folder (`ls`), search for a word (`grep`), read a file. They do not
   ask for your permission. Writing a file does.
-- **A visible failure**: when a search finds nothing, the model sees zero results.
+- **A visible failure**: when the documents do not hold the answer, a search finds nothing (zero
+  results), or it finds files that do not answer. The model sees it, and so do you.
 
 ### What the model reads in mode C
+
+On its own, a model cannot open a file. In mode C, it asks **Claude Code**, the program around it,
+to list a folder, search for a word or read a file. What comes back enters the context, and the
+model decides what to do next: another search, another file, or the answer. `workshop C` also adds
+a short text to your system prompt. It says where the two folders are, and it tells the model to
+start with the summaries, to go to the full documents for details, and to say which document it
+used.
 
 ```mermaid
 flowchart LR
@@ -232,7 +242,9 @@ step is shown.
 
 1. Open `test-questions.md`, copy question 3, and paste it in the conversation with
    `Ctrl+Shift+V` (`Cmd+V` on a Mac). It is about the access to forest massifs in Bouches-du-Rhône.
-   Its answer is **not in the summaries**: only in the full text of an order.
+   Its answer is **not in the summaries**: only in the full text of an order, a legal decision of
+   the prefecture. In workshop 2, in our test, the RAG missed it: the article that answers was never
+   in its pieces. Can the model reach it by searching?
 2. Above the answer, a grey line sums up the steps, for example `Searched for 1 pattern, read 2
    files`. Press **Ctrl+O** (also on a Mac) to see each step: which word it searched, which files
    it opened. The screen then says `Showing detailed transcript · ctrl+o to toggle`: **Ctrl+O**
@@ -243,8 +255,9 @@ step is shown.
    ![The same answer after Ctrl+O. 1: the search, with the word searched and the files found. 2: the file read. 3: the line that says how to come back, ctrl+o to toggle.](images/steps-expanded.png)
 3. Look at the gauge. In our test on 2026-10-30, the model searched with `grep` in `summaries/`
    and `corpus/`, read the summary of Bouches-du-Rhône, then the full order in `corpus/text/`,
-   without asking any permission, and the gauge showed about **23,000 tokens**. In mode B it was about 100,000
-   (measured after question 10): the whole kit is in the window, whatever the question. Your steps may differ: the model decides each time.
+   without asking any permission, and the gauge showed about **23,000 tokens** (a token is a piece
+   of a word). In mode B it was about 100,000 (measured after question 10): the whole kit is in the
+   window, whatever the question. Your steps may differ: the model decides each time.
 
 #### Step 3 - Question 7: an answer that exists nowhere
 
@@ -252,16 +265,28 @@ step is shown.
 2. Watch the searches: which documents do they find, and do these documents answer the question?
    What does the model say? Compare with what the RAG did in workshop 2, where the model always got
    5 pieces.
+3. **What this means.** A search can find documents about the same place and still bring no answer:
+   the model reads them and sees that the figure is not there. A search can also find nothing at
+   all. Either way, you can read what it searched and what it found, so the failure is visible. In
+   workshop 2, in our test, the model also said that the answer was missing, but it could not look
+   further than its 5 pieces. Here it chooses each search, so you can judge the search as well as
+   the answer.
 
 #### Step 4 - Leave
 
 Press **Ctrl+C twice**. From mode C on, `/exit` works too, and `/context` shows in detail what
 fills the context window.
 
+> 💡 **Tip.** **Checkpoint**: you can name the files the model opened for question 3, and say what
+> its searches found for question 7.
+
 ### Think about it
 
 In mode B, nobody picked. In the RAG, a search engine picked. **Who picks in mode C, and how can
 you check it?**
+
+> **You built** a chatbot that goes to look for what it needs, and shows each step. **Reused in** a
+> chatbot folder of your own: [OpenCode guide, Part 4](https://github.com/Youth-AI-Lab/yal-opencode-guide#part-4---the-knowledge).
 
 ---
 
@@ -277,18 +302,28 @@ a summary, check it sentence by sentence, and sign it.
 - **The skill `summarize`**: the model writes a draft summary in English, and a verification table
   that puts each sentence next to the passage of the original that supports it.
 - **The skill `validate-summary`**: it records that **a person** checked the summary. The model
-  cannot sign it.
+  must not sign it: its rules say so, and you read what it writes.
 
 ### The three layers of knowledge
 
 | Folder | What it holds | Who writes it |
 |---|---|---|
-| `corpus/` | the official documents, **never modified**, and a readable copy of each in `corpus/text/` | the authorities |
-| `summaries/` | one short summary in English per document, 5 to 15 sentences, one fact per sentence | the model, then a person checks it |
-| `summaries/checks/` | the verification table of each summary written today | the model |
+| `corpus/` | the official documents, **never modified**, and a readable copy of each in `corpus/text/` | the authorities; a program makes the readable copy (`corpus-add` for yours) |
+| `summaries/` | short summaries in English of the official documents, 5 to 15 sentences each, one fact per sentence | the model, then a person checks it |
+| `summaries/checks/` | the working folder of the check: the verification table of each summary written today | the model |
 
-Every summary starts with a header. `status: draft` means that no person has checked it.
-`verified: … human:<name>` means that a person did, and `status: stable` follows.
+**Why a summary, if the model can read the full document?** A document can be long, and it stays
+in its own language. The summaries are short and in English, so the model starts there, and opens
+a full document for details or when the summaries are not enough. A summary can then be all it
+reads for a question.
+
+Every summary starts with a **header**: a few lines between two `---` that say where it comes from
+and who vouches for it. Open `summaries/31-charente-maritime-fire-use-rules.md` to see one: its
+last `verified` line carries the name of a person. `status: draft` means that no person has checked
+the summary. `verified: … human:<name>` means that a person did, and `status: stable` follows. The
+model reads this header too: `workshop C` tells it that `status: draft` means not yet checked by a
+person. Today, 4 of the 17 summaries of the kit carry a person's name: look for "(human-reviewed)"
+at the end of the lines of `summaries/index.md`.
 
 **Key insight:** a wrong summary gives a wrong answer, with confidence. **Curation** means that a
 person decides what enters the knowledge, and signs what the chatbot will say about it.
@@ -312,8 +347,9 @@ person decides what enters the knowledge, and signs what the chatbot will say ab
 
 #### Step 1 - Add the document of Benevento (question 11)
 
-1. Open `inbox/README.md` (`Ctrl+Shift+V`) and copy its `corpus-add` command. It is **one single
-   line**, even if your screen cuts it.
+1. Open `inbox/README.md` and copy its `corpus-add` command. It is **one single line**, even if your
+   screen cuts it. In the editor, `Ctrl+Shift+V` shows a file as a page; in the terminal, the same
+   keys paste.
 2. Paste it in your first terminal, outside a conversation, with `Ctrl+Shift+V`, and press Enter.
    You should see, in less than a second:
 
@@ -339,16 +375,19 @@ summary is optional today: the model can read the readable copy itself. So **do 
 
 2. You should see the same three lines, with the number **81**, and maybe a line `To complete in the
    header of corpus/text/81-….md: description.`: it lists what the page did not say about itself.
-   You can add `--title "…" --publisher "…" --description "…"` to give it.
+   Open that file and replace `TO BE COMPLETED` in its header with a short text, and in the last
+   line of `corpus/index.md` if it is there too. Do not type `corpus-add` again for this page: it
+   would add a second copy, with the number 82.
 3. **Open the readable copy** `corpus/text/81-….md` and check that the fact of your question 12 is
-   in it. Some pages load their content with a script: then the copy is almost empty. For example,
-   the map of a French prefecture gave only 318 tokens, because the level of the day is not in the
-   page itself.
+   in it. On some pages, the text is not in the page itself: your browser fetches it afterwards,
+   with a small program called a **script**. `corpus-add` only downloads the page and does not run
+   the script, so the copy is almost empty. For example, the map of a French prefecture gave only
+   318 tokens: the fire danger level of the day was not in the copy.
 
 > ℹ️ **Note.** **If your page is refused** (a scanned PDF, a page whose text is loaded by a script,
 > or a site that refuses downloads: see [Troubleshooting](#troubleshooting)), or if its copy is
 > empty, do Steps 3 to 6 with the document of Benevento instead: `summarize
-> corpus/80-benevento-aib-2026.pdf`. Then read **80** instead of 81 in Steps 4 and 5, and ask
+> corpus/80-benevento-aib-2026.pdf`. Then read **80** instead of 81 in these steps, and ask
 > question **11** in Step 6.
 
 #### Step 3 - Let the model write a draft summary
@@ -383,10 +422,16 @@ of row you check first.
 1. Open the table `summaries/checks/81-….md`.
 2. Open the source next to it: right-click on it in the file list, then **"Open to the Side"**.
    - For a **web page**, open the readable copy `corpus/text/81-….md` (the original `.html` is
-     markup, hard to read), and if you want the official layout, the page itself in a browser tab.
+     the code of the page, hard to read), and if you want the official layout, the page itself in a browser tab.
    - For a **PDF**, open the original `corpus/81-….pdf`: it opens in a PDF viewer.
 3. For each row: copy a few words of the original passage, search them in the source with
    `Ctrl+F`, and compare with the sentence. Dates and numbers are easy to compare in any language.
+
+   Look for three kinds of error: a figure, a unit or a date that changed; a condition or an
+   exception that was dropped ("except…", "from level…"); a sentence that says more than its
+   passage. The passage is copied word for word, so it must be in the source. If you cannot find
+   it, search for fewer words. If it is still not there, the row is wrong.
+
 4. Fill the **OK?** column: `yes`, or write the right version in **Correction**, between the two
    `|` of the cell, without adding or removing a `|`. Save (`Ctrl+S`). You can also say it in the
    conversation instead, in Step 5: `I checked sentences 1 to 10, sentence 3 is wrong, it should be
@@ -398,7 +443,8 @@ of row you check first.
 
 #### Step 5 - Sign it
 
-1. In the conversation, tell the chatbot, with your names:
+1. In the conversation, tell the chatbot, with your names. Keep these words: they match the
+   description of the skill, and that is what opens it:
 
    ```
    Validate summary 81. I checked every row. My name is <first name last name>.
@@ -415,11 +461,19 @@ of row you check first.
 #### Step 6 - Check the result
 
 1. Open `summaries/index.md`: under "Added during the session", your summary went from "(draft, not
-   verified)" to "(human-reviewed)".
+   verified)" to "(human-reviewed)". Then open `summaries/81-…` and read its `verified` line, with
+   your name.
 2. Leave with **Ctrl+C twice**: this conversation has just read your document, so it would answer
    from memory.
 3. Start `workshop C` again and ask your question 12 in this new conversation. Press **Ctrl+O**:
-   does it open `summaries/81-…` or `corpus/text/81-…`? **Ctrl+O** again, then leave with **Ctrl+C twice**.
+   does it open `summaries/81-…` or `corpus/text/81-…`?
+   - `summaries/81-…`: the chatbot answers from the text you checked and signed.
+   - `corpus/text/81-…` only: it answers from the full document, and your summary was not needed
+     this time.
+   - Neither: look at the words it searched, if it searched at all. They can show why it missed
+     your document.
+
+   **Ctrl+O** again, then leave with **Ctrl+C twice**.
 
 > 💡 **Tip.** **Checkpoint**: `corpus/80-…` and `corpus/81-…` exist, and `summaries/index.md` says
 > "(human-reviewed)" for your summary.
@@ -464,9 +518,11 @@ same way.
 | Who decides to use it | you: it is always there | the model, from the description |
 | Cost in the context | the whole text, every time | a few lines, until it is used |
 
-**Key insight:** a skill keeps a task the same every time. The summary always gets its
-verification table, and some rules cannot be skipped: `summarize` says "Never add a `verified`
-entry yourself, and never mark a summary as checked."
+**Key insight:** a skill keeps a task the same each time it is used. The summary gets its
+verification table, and the rules stay written down: `summarize` says "Never add a `verified`
+entry yourself, and never mark a summary as checked." But a skill is only text: nothing forces the
+model to open it or to follow it. So press **Ctrl+O** to check, and read what it wants to write
+before you accept.
 
 ### What to do
 
@@ -474,8 +530,11 @@ entry yourself, and never mark a summary as checked."
 
 1. Open `.claude/skills/summarize/SKILL.md`, then press `Ctrl+Shift+V`.
 2. Read the header between the two `---` lines: the `name` and the `description`. Would your request
-   of Part 3, "summarize corpus/81-…", match it?
-3. Read the steps and the rules.
+   of Part 3, "summarize corpus/81-…", match it? "Validate summary 81…" opened `validate-summary` the
+   same way: its words match the description of that skill.
+3. Read the steps and the rules. Find the step that says which file the model reads, the step that
+   creates the verification table, and the rule about `verified`. You saw all three at work in
+   Part 3: the model did them because this text told it to.
 
 #### Step 2 - Write a skill
 
@@ -527,8 +586,12 @@ it, the **steps**, and what the model must **never** do.
    `Skill(rumour-check)`, then a search. Is the answer TRUE, FALSE or NOT IN OUR DOCUMENTS, with a
    source?
 3. Ask a request that should **not** use it: `Hello, who are you?`
-4. Change the description, save, leave (**Ctrl+C twice**), start `workshop C` again, and test both
-   requests again, until the skill triggers when it should, and only when it should.
+4. Now see that the description is the trigger. Change it, save, leave (**Ctrl+C twice**), start
+   `workshop C` again, and test both requests again. If your skill already triggers when it should,
+   try a description that says less: remove the sentence that starts with "Use when", and see what
+   changes. Keep the version that triggers when it should, and only when it should. A skill that
+   opens on "Hello" adds its text to the context for nothing, and it can force its format on an
+   answer that does not need it.
 5. Leave with **Ctrl+C twice**: Part 5 starts in the terminal.
 
 In a real Codespace on 2026-10-30, this rumour used `rumour-check` twice out of two (`● Skill(rumour-check)`,
@@ -551,6 +614,16 @@ every answer, and what only for one kind of request?)
 
 ## Part 5 - Closing (10 min)
 
+**Goal**: measure what today changed, on the questions that can show it. Then see your chatbot
+outside the terminal, and save your work.
+
+| Question | What it puts to the test today |
+|---|---|
+| 3 | an answer that is only in a full document: can the model reach it by searching? |
+| 8 | something that changes every day: your starting point for workshop 4 |
+| 11 | the document of Benevento, that you let in today |
+| 12 | the page of your territory, whose summary you checked and signed |
+
 ### Step 1 - Replay and score column C
 
 1. **Predict** on paper: which of questions 3, 11 and 12 will go up from column B to column C?
@@ -561,8 +634,9 @@ every answer, and what only for one kind of request?)
    ```
 
    Under each answer, the line `What the model did:` lists what it read, searched and used, for
-   example `used the skill rumour-check`. In our test on 2026-10-30, with the 11 questions of the
-   kit (no question 12): 1 min 42 and $0.30.
+   example `used the skill rumour-check`. The questions of the test set are not rumours, so this
+   example may not appear: in our test on 2026-10-30, no question used that skill. That test, with
+   the 11 questions of the kit (no question 12): 1 min 42 and $0.30.
 3. Score the questions of today, and question 8, which workshop 4 compares with its tool, with the
    help of the judge (no question 12: `score C 3 8 11`):
 
@@ -578,6 +652,12 @@ every answer, and what only for one kind of request?)
    > empty in columns B or RAG? Your answers came back with your save: score them first, with
    > `score B 11 12` and `score RAG 11 12` (no question 12: `score B 11` and `score RAG 11`).
 
+5. **How to read the rows.** Questions 11 and 12 show what you let in: their documents entered
+   today, so a rise comes from your curation. Question 3 shows the search. In mode B the full order
+   was already in the context, so column B may already be right: the gain is in the gauge, about
+   23,000 tokens against about 100,000. Against the RAG, the score can rise: in our tests, questions
+   3 and 11 each got 1 in the RAG and 2 in mode C.
+
 ### Step 2 - Your chatbot in Open WebUI
 
 1. In your second terminal, check that Open WebUI is ready, then type, with the name of your
@@ -588,7 +668,11 @@ every answer, and what only for one kind of request?)
    ```
 
 2. Open the address, choose your chatbot, and ask your question 12. Your chatbot now has your
-   documents, and it searches them itself.
+   documents, and it searches them itself. When it searches, a line appears above the answer: it
+   starts with "Explored" after several searches, and with "View Result from" after one. Click it to
+   see its searches, as with **Ctrl+O** in mode C.
+3. Your skill did not come along: this chatbot gets your system prompt and your knowledge files. The
+   skill stays in this repository, and Step 3 saves it in `my-work.zip`.
 
 ### Step 3 - Save your work, fill in the exit card
 
@@ -600,7 +684,7 @@ every answer, and what only for one kind of request?)
    If your computer already has a `my-work.zip`, the new one may be called `my-work (1).zip`:
    bring the newest.
 
-2. Answer on the card of the facilitator, alone, in a few words:
+2. Take a blank card or a half sheet from the facilitator. This is your **exit card**. Answer alone, in a few words:
    1. In mode C, who decides what the model reads, and how can you check it?
    2. Why is a person's name, and not the model's, in the `verified` line of a summary?
    3. When does the model open a skill?
