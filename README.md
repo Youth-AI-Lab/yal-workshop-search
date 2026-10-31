@@ -1,6 +1,6 @@
 # Workshop 3 - Let it search, give it know-how
 
-### Youth AI Lab (Erasmus+) - series "Customising a chatbot", workshop 3 of 5
+### Youth AI Lab (Erasmus+) - series "Build your own chatbot", workshop 3 of 5
 
 - **Project:** Youth AI Lab (Erasmus+), with five partners: L.A.B. (Aix-en-Provence, France),
   UAB (Barcelona, Spain), Perlatecnica (Naples, Italy), Digitale Wolven (Antwerp, Belgium),
@@ -224,7 +224,7 @@ step is shown.
    workshop C
    ```
 
-2. You should see the banner `Workshop — mode C. To quit: press Ctrl+C twice. …`, then the screen of
+2. You should see the banner `Workshop: mode C. To quit: press Ctrl+C twice. …`, then the screen of
    Claude Code.
 
 #### Step 2 - Question 3: an answer that is only in a full document
