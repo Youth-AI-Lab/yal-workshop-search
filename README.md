@@ -573,6 +573,10 @@ every answer, and what only for one kind of request?)
    your prediction. Today only some questions are scored, so **the Total row means nothing here**:
    read the rows. Without a save, there are no columns B and RAG: compare with a neighbouring pair.
 
+   > ℹ️ **Note.** At workshop 2, questions 11 and 12 were scored only if there was time. Rows 11 and 12
+   > empty in columns B or RAG? Your answers came back with your save: score them first, with
+   > `score B 11 12` and `score RAG 11 12` (no question 12: `score B 11` and `score RAG 11`).
+
 ### Step 2 - Your chatbot in Open WebUI
 
 1. In your second terminal, check that Open WebUI is ready, then type, with the name of your
@@ -642,4 +646,4 @@ Texts and screenshots: [CC BY-SA 4.0](LICENSES/CC-BY-SA-4.0.txt). Configuration 
 [EUPL-1.2](LICENSES/EUPL-1.2.txt). The official documents are not ours and are not covered: see
 [their note](LICENSES/LicenseRef-Third-Party.txt) and [`REUSE.toml`](REUSE.toml).
 
-*Youth AI Lab (Erasmus+) - Workshop 3 of the series "Customising a chatbot" - 2026*
+*Youth AI Lab (Erasmus+) - Workshop 3 of the series "Build your own chatbot" - 2026*

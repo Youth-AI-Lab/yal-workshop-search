@@ -49,7 +49,8 @@ Full page: [README.md](README.md). Setup and common problems: [SETUP.md](SETUP.m
 ## 5. Closing (10 min)
 
 1. Predict: which of 3, 11, 12 go up from B to C? `replay C`, then `score C 3 8 11 12` (8 is
-   for workshop 4). Compare the rows with columns B and RAG: the Total row means nothing today.
+   for workshop 4). Rows 11, 12 empty in B or RAG? First `score B 11 12`, `score RAG 11 12`.
+   Compare the rows with columns B and RAG: the Total row means nothing today.
 2. Terminal 2: `openwebui chatbot --name "<your chatbot>"` → ask your question 12.
 3. `workshop-save` → right-click on `my-work.zip` → **Download...**. Bring it to [workshop 4](https://github.com/Youth-AI-Lab/yal-workshop-tools)
    (maybe `my-work (1).zip`: the newest), with the address of the fire danger page of your territory.
