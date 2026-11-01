@@ -256,8 +256,11 @@ step is shown.
 3. Look at the gauge. In our test on 2026-10-30, the model searched with `grep` in `summaries/`
    and `corpus/`, read the summary of Bouches-du-Rhône, then the full order in `corpus/text/`,
    without asking any permission, and the gauge showed about **23,000 tokens** (a token is a piece
-   of a word). In mode B it was about 100,000 (measured after question 10): the whole kit is in the
-   window, whatever the question. Your steps may differ: the model decides each time.
+   of a word). The gauge is a sum: what is always there, plus what the model opened. A simple
+   "Hello" in mode C already fills about 8,000 tokens: the instructions, the tools, the list of
+   skills. So here, the searches, the summary and the order added about 15,000 tokens
+   (23,000 - 8,000). In mode B it was about 100,000 (measured after question 10): the whole kit is
+   in the window, whatever the question. Your steps may differ: the model decides each time.
 
 #### Step 3 - Question 7: an answer that exists nowhere
 
