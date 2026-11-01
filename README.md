@@ -139,9 +139,9 @@ second terminal.
 
 > ⚠️ **Important.** **With young people and an OpenRouter key**, type `workshop-login --europe`.
 > Requests then go only to Mistral, hosted in Europe, with zero data retention (it says it stores nothing).
-> The default model is Mistral Small. OpenRouter itself may still handle them elsewhere. The
+> The default model is `mistralai/mistral-small-2603`. OpenRouter itself may still handle them elsewhere. The
 > setting does not lift OpenRouter's 18+ rule or section 5.2 of its terms, and flagged content may
-> be kept. Mode B does not run with it: your column B stays empty. Read
+> be kept. Read
 > [OpenRouter guide, Part 8](https://github.com/Youth-AI-Lab/yal-openrouter-guide#part-8---data-and-young-people)
 > before any session with young people.
 
@@ -668,7 +668,6 @@ outside the terminal, and save your work.
    > ℹ️ **Note.** At workshop 2, questions 11 and 12 were scored only if there was time. Rows 11 and 12
    > empty in columns B or RAG? Your answers came back with your save: score them first, with
    > `score B 11 12` and `score RAG 11 12` (no question 12: `score B 11` and `score RAG 11`).
-   > With `workshop-login --europe` there is no column B: score and compare column RAG alone.
 
 5. **How to read the rows.** Questions 11 and 12 show what you let in: their documents entered
    today, so a rise comes from your curation. Question 3 shows the search. In mode B the full order
