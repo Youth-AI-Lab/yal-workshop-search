@@ -126,10 +126,25 @@ second terminal.
 
 > 💡 **If you use OpenCode.** Same commands, after `workshop-login --engine opencode`. In mode C,
 > OpenCode searches with its own tools (`read`, `grep`, `glob`), and it asks you before **every**
-> shell command and every file it writes. With an OpenRouter key (`sk-or-`), Open WebUI and the
-> judge of `score` do not work: they need an Anthropic key, so you score alone. The
+> shell command and every file it writes. The
 > [OpenCode guide, Part 4](https://github.com/Youth-AI-Lab/yal-opencode-guide#part-4---the-knowledge)
 > shows the same kind of search in a chatbot folder.
+
+> 💡 **If your key starts with `sk-or-` (OpenRouter).** Paste it in `workshop-login`, with no option:
+> the key chooses OpenCode, and `score` and Open WebUI use OpenRouter too. `openwebui chatbot`, and
+> skills or Open WebUI with the default model, DeepSeek V4 Flash: (not tested). Compare your own
+> columns only: `score` writes the model under the table, and warns when two columns used different
+> models. The chatbot figures of this page (cost, time, gauge, scores) were measured with Claude, not
+> with this model.
+
+> ⚠️ **Important.** **With young people and an OpenRouter key**, zero-data-retention models hosted in
+> Europe must be on. Zero data retention: the company says it stores nothing, and OpenRouter does not
+> guarantee it. Turn on the switches in your [privacy settings](https://openrouter.ai/settings/privacy)
+> and choose **Zero retention only** (not tested). Europe is not a switch: it needs a Business or
+> Enterprise plan, and the workshop commands cannot do it yet. No setting lifts OpenRouter's rule: "You
+> must be at least 18 years of age to use the Service." Read
+> [OpenRouter guide, Part 8](https://github.com/Youth-AI-Lab/yal-openrouter-guide#part-8---data-and-young-people)
+> before any session with young people.
 
 > ℹ️ **No Codespace?** The same repository opens on your own computer, with Docker and VS Code: see
 > the [dev containers guide](https://github.com/Youth-AI-Lab/yal-devcontainer-guide).
