@@ -255,7 +255,7 @@ step is shown.
    ![The same answer after Ctrl+O. 1: the search, with the word searched and the files found. 2: the file read. 3: the line that says how to come back, ctrl+o to toggle.](images/steps-expanded.png)
 3. Look at the gauge. In our test on 2026-10-30, the model searched with `grep` in `summaries/`
    and `corpus/`, read the summary of Bouches-du-Rhône, then the full order in `corpus/text/`,
-   without asking any permission, and the gauge showed about **23,000 tokens** (a token is a piece
+   without asking any permission, and the gauge showed about **23,000 tokens** ([a token](https://github.com/Youth-AI-Lab/yal-local-ai-guide/blob/main/how-an-llm-works.md#what-a-token-really-is) is a piece
    of a word). The gauge is a sum: what is always there, plus what the model opened. A simple
    "Hello" in mode C already fills about 8,000 tokens: the instructions, the tools, the list of
    skills. So here, the searches, the summary and the order added about 15,000 tokens
