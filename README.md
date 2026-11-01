@@ -138,8 +138,8 @@ second terminal.
 > with this model.
 
 > ⚠️ **Important.** **With young people and an OpenRouter key**, type `workshop-login --europe`.
-> Requests then go only to zero-data-retention companies (they say they store nothing) hosted in
-> Europe, with Mistral Small by default. OpenRouter itself may still handle them elsewhere. The
+> Requests then go only to Mistral, hosted in Europe, with zero data retention (it says it stores nothing).
+> The default model is Mistral Small. OpenRouter itself may still handle them elsewhere. The
 > setting does not lift OpenRouter's 18+ rule or section 5.2 of its terms, and flagged content may
 > be kept. Mode B does not run with it: your column B stays empty. Read
 > [OpenRouter guide, Part 8](https://github.com/Youth-AI-Lab/yal-openrouter-guide#part-8---data-and-young-people)
