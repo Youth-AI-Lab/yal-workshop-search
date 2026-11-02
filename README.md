@@ -339,7 +339,7 @@ and who vouches for it. Open `summaries/30-charente-maritime-vigilance-levels.md
 last `verified` line carries the name of a person. `status: draft` means that no person has checked
 the summary. `verified: … human:<name>` means that a person did, and `status: stable` follows. The
 model reads this header too: `workshop C` tells it that `status: draft` means not yet checked by a
-person. Today, 3 of the 17 summaries of the kit carry a person's name: look for "(human-reviewed)"
+person. Today, 4 of the 17 summaries of the kit carry a person's name: look for "(human-reviewed)"
 at the end of the lines of `summaries/index.md`.
 
 **Key insight:** a wrong summary gives a wrong answer, with confidence. **Curation** means that a
