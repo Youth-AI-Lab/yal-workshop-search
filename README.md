@@ -358,7 +358,8 @@ person decides what enters the knowledge, and signs what the chatbot will say ab
 > ```
 >
 > **Never choose 2**: you would no longer see what it writes. Searching and reading do not need
-> your permission.
+> your permission. **Never approve a command that mentions `sudo` or `workshop-key`**: choose
+> **3. No**. Such a command could read your key.
 
 ### What to do
 
