@@ -729,12 +729,21 @@ outside the terminal, and save your work.
    openwebui chatbot --name "Feurisson"
    ```
 
+   It is done when you see `Ready.` Just before, a line names your skill: `Your skills came along:
+   rumour-check.` (with the name of yours).
+
 2. Open the address, choose your chatbot, and ask your question 12. Your chatbot now has your
    documents, and it searches them itself. When it searches, a line appears above the answer: it
    starts with "Explored" after several searches, and with "View Result from" after one. Click it to
    see its searches, as with **Ctrl+O** in mode C.
-3. Your skill did not come along: this chatbot gets your system prompt and your knowledge files. The
-   skill stays in this repository, and Step 3 saves it in `my-work.zip`.
+3. Ask a request that triggered your skill in Part 4, for example with `rumour-check`: `I heard
+   that in France, clearing the brush around your house is only a piece of advice.` Your skill came
+   along, but it does not work as in Claude Code. Open WebUI sends
+   its whole text with **every** message, even `Hello`: its description no longer decides when it
+   is read, and no line appears above the answer for it. Each message costs a little more: about
+   200 tokens for the example `rumour-check`, by our estimate. The chatbot cannot change it. The three skills of the
+   kit (`summarize`, `validate-summary`, `source-note`) stay in this repository: they write files,
+   and a chatbot in Open WebUI cannot.
 
 ### Step 3 - Save your work, fill in the exit card
 
