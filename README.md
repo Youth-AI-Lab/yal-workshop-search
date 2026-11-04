@@ -561,7 +561,7 @@ Choose one of these ideas, or one of your own:
 
 | Skill | What it does | In WikiYouthBot |
 |---|---|---|
-| `rumour-check` | takes a sentence heard somewhere and answers TRUE, FALSE or NOT IN OUR DOCUMENTS, with the source | I Heard a Rumor |
+| `rumour-check` | takes a sentence heard somewhere and answers TRUE, PARTLY TRUE, FALSE or NOT IN OUR DOCUMENTS, with the source | I Heard a Rumor |
 | `quiz-maker` | writes 5 multiple-choice questions for 12 to 15-year-olds from one summary, each with its answer and its source | SDG Bingo |
 | `explain-for-kids` | rewrites a summary for a 12-year-old: short sentences, no jargon, the same figures and the same source | Chatbot Studio |
 | `translate-summary` | translates a summary, keeps the figures, and marks the result as a draft to check | The Data Box |
@@ -585,14 +585,19 @@ description: Checks a rumour about wildfires against the documents. Use when the
 
 1. Write the rumour as one short sentence.
 2. Search summaries/ first, then corpus/text/ if needed.
-3. Answer with one of three words: TRUE, FALSE, or NOT IN OUR DOCUMENTS.
-4. Give the sentence of the document that proves it, and the name of the document.
+3. Answer with one of four verdicts: TRUE, PARTLY TRUE, FALSE, or NOT IN OUR DOCUMENTS.
+4. Give the sentence of the document that proves it, and the name of the document. For PARTLY
+   TRUE, say which part is true and which part is not, each with its sentence.
 
 ## What you don't do
 
 - Answer from what you know without a document: then the answer is NOT IN OUR DOCUMENTS.
 - Say TRUE or FALSE when the documents disagree: say so, and give both.
 ```
+
+Why PARTLY TRUE? A rumour often holds a part of truth: that is why people believe it. And the
+model may have read the same rumour during its training, so its own idea can be biased too. The
+skill makes it look in the documents first, and keep the part that a document proves.
 
 For your own skill, keep the same four parts: a **name**, a **description** that says when to use
 it, the **steps**, and what the model must **never** do.
@@ -602,8 +607,8 @@ it, the **steps**, and what the model must **never** do.
 1. **Leave and start `workshop C` again**, so that the model sees your new skill for sure.
 2. Ask a request that should use your skill. For `rumour-check`: `I heard that in France, clearing
    the brush around your house is only a piece of advice.` You should see the line
-   `Skill(rumour-check)`, then a search. Is the answer TRUE, FALSE or NOT IN OUR DOCUMENTS, with a
-   source?
+   `Skill(rumour-check)`, then a search. Is the verdict one of the four, with a source? You
+   decide if the source really says it: open the document.
 3. Ask a request that should **not** use it: `Hello, who are you?`
 4. Now see that the description is the trigger. Change it, save, leave (**Ctrl+C twice**), start
    `workshop C` again, and test both requests again. If your skill already triggers when it should,
@@ -615,7 +620,12 @@ it, the **steps**, and what the model must **never** do.
 
 In a real Codespace on 2026-10-30, this rumour used `rumour-check` twice out of two (`● Skill(rumour-check)`,
 then a search in the documents), and "Hello, who are you?" used no skill. Each test filled about
-11,000 to 12,000 tokens of the window.
+11,000 to 12,000 tokens of the window. That test used an earlier version of the example, with
+three verdicts and the same description.
+
+**Key insight:** search and skills work together. The search finds the facts and shows where they
+are; the skill says what to do with them, the same way every time. Together, they do a task you
+would otherwise repeat by hand, and they hand you the sources to decide.
 
 > 💡 **Tip.** **Checkpoint**: your `SKILL.md` exists, it triggers on one request, and not on
 > "Hello, who are you?".
@@ -674,8 +684,10 @@ outside the terminal, and save your work.
 5. **How to read the rows.** Questions 11 and 12 show what you let in: their documents entered
    today, so a rise comes from your curation. Question 3 shows the search. In mode B the full order
    was already in the context, so column B may already be right: the gain is in the gauge, about
-   23,000 tokens against about 100,000. Against the RAG, the score can rise: in our tests, questions
-   3 and 11 each got 1 in the RAG and 2 in mode C.
+   23,000 tokens against about 100,000. Against the RAG, the score can rise: in our tests, question
+   3 got 1 in the RAG and 2 in mode C. Question 11 rose too, but its document was not in the RAG:
+   that rise comes from your curation, not from the search. The RAG is cheaper: about 2,500 tokens
+   per question on average in workshop 2, because it sends only 5 pieces.
 
 ### Step 2 - Your chatbot in Open WebUI
 
