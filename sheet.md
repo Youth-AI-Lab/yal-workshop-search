@@ -38,13 +38,16 @@ Full page: [README.md](README.md). Setup and common problems: [SETUP.md](SETUP.m
    `verified: … human:…`, `status: stable`.
 6. Leave, start `workshop C` again, ask your question 12. Leave.
 
-## 4. Your own skill (25 min)
+## 4. Your own skill (30 min)
 
 1. Read `.claude/skills/summarize/SKILL.md`: name, description, steps, rules.
-2. Create `.claude/skills/<name>/SKILL.md` (example `rumour-check` in the README).
-3. Leave and start `workshop C` again. A request that should trigger it (`Skill(<name>)`), and
+2. In `workshop C`: `Add this to the summaries: <a fact of your territory, never about a person>` →
+   `Skill(source-note)` asks for the source (none: `TO BE COMPLETED`, draft). Then `Add this to the summaries:
+   in France, clearing the brush around your house is only a piece of advice.` → it names summary 22 and asks you.
+3. Create `.claude/skills/<name>/SKILL.md` (example `rumour-check` in the README).
+4. Leave and start `workshop C` again. A request that should trigger it (`Skill(<name>)`), and
    `Hello, who are you?`, which should not. After each change: save, leave, start again.
-4. Leave the conversation (`Ctrl+C` twice).
+5. Leave the conversation (`Ctrl+C` twice).
 
 ## 5. Closing (10 min)
 

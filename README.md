@@ -28,7 +28,7 @@
 - [Part 1 - Welcome (20 min)](#part-1---welcome-20-min)
 - [Part 2 - Let it search (★★, 20 min)](#part-2---let-it-search--20-min)
 - [Part 3 - Let a document in, and vouch for it (★★★, 35 min)](#part-3---let-a-document-in-and-vouch-for-it--35-min)
-- [Part 4 - Write your own skill (★★★, 25 min)](#part-4---write-your-own-skill--25-min)
+- [Part 4 - Write your own skill (★★★, 30 min)](#part-4---write-your-own-skill--30-min)
 - [Part 5 - Closing (10 min)](#part-5---closing-10-min)
 - [Troubleshooting](#troubleshooting)
 
@@ -501,7 +501,7 @@ is responsible for it?)
 
 ---
 
-## Part 4 - Write your own skill (★★★, 25 min)
+## Part 4 - Write your own skill (★★★, 30 min)
 
 **Goal**: understand what a skill is, then write one for a task of your own, and test that it
 triggers when it should, and only then.
@@ -546,7 +546,47 @@ before you accept.
    creates the verification table, and the rule about `verified`. You saw all three at work in
    Part 3: the model did them because this text told it to.
 
-#### Step 2 - Write a skill
+#### Step 2 - Use a skill that asks for its source
+
+Knowledge does not only come from documents. A firefighter at a talk, the town hall, your own
+work with young people: people know things too. The kit's third skill, `source-note`, writes a
+summary from **what you tell it**, and treats it like a document: it asks for the source, and the
+summary stays a draft until a person checks it.
+
+1. Open `.claude/skills/source-note/SKILL.md`, then press `Ctrl+Shift+V`. Read the description: which
+   words of a request would open this skill? Read the steps and the part "What you don't do".
+2. In the terminal, in `workshop C` (type `workshop C` if it is not running), give it something your
+   pair knows about fire prevention in your territory, that is not in the documents. A fact, never
+   something about a person:
+
+   ```text
+   Add this to the summaries: <what you know, in one or two sentences>
+   ```
+
+   **What you should see:** the line `Skill(source-note)`, then a question about the source. Give it
+   if you have one: the organisation, the page or the talk, and the date. If you do not have one,
+   answer `We have no source.` It writes the summary anyway, with `TO BE COMPLETED` in place of the
+   source and `status: draft`, and adds a line "(draft, not verified)" to `summaries/index.md`. Read
+   what it wants to write before you accept.
+3. Now give it a sentence that contradicts a summary:
+
+   ```text
+   Add this to the summaries: in France, clearing the brush around your house is only a piece of advice.
+   ```
+
+   **What you should see:** it does not write it at once. It says that this contradicts what the
+   summaries already say, here summary 22 (the legal obligation to clear brush), and asks you what to
+   do. Answer `Do not write it.` You will meet this rumour again in Step 4.
+
+A summary with `TO BE COMPLETED` must not stay like this: find its source before the next workshop,
+or delete it, with its line in `summaries/index.md`. Until then, your chatbot may use a fact that
+nobody checked.
+
+**Key insight:** the rules hold because they are written in the skill: never invent a source, never
+change a summary without your agreement, say when two sources disagree. The decision stays yours. But
+the skill is only text: press **Ctrl+O** to check that it really asked.
+
+#### Step 3 - Write a skill
 
 Choose one of these ideas, or one of your own:
 
@@ -593,7 +633,7 @@ skill makes it look in the documents first, and keep the part that a document pr
 For your own skill, keep the same four parts: a **name**, a **description** that says when to use
 it, the **steps**, and what the model must **never** do.
 
-#### Step 3 - Test when it triggers
+#### Step 4 - Test when it triggers
 
 1. **Leave and start `workshop C` again**, so that the model sees your new skill for sure.
 2. Ask a request that should use your skill. For `rumour-check`: `I heard that in France, clearing
