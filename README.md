@@ -266,6 +266,12 @@ step is shown.
    skills. So here, the searches, the summary and the order added about 15,000 tokens
    (23,000 - 8,000). In mode B it was about 100,000 (measured after question 10): the whole kit is
    in the window, whatever the question. Your steps may differ: the model decides each time.
+4. **Check the answer yourself.** A file that the model opened is not a fact that it read well.
+   Open the file it read in `corpus/text/` (in our test,
+   `43-bouches-du-rhone-arrete-acces-consolide.md`), press **Ctrl+F** and search `5 h`: the line of
+   the level `Sévère` gives the hours. Does the answer say the same levels and the same hours as the
+   source, and as the expected answer of `test-questions.md`? If not, the answer gets 1 or 0, even
+   with a source.
 
 #### Step 3 - Question 7: an answer that exists nowhere
 
@@ -285,16 +291,18 @@ step is shown.
 Press **Ctrl+C twice**. From mode C on, `/exit` works too, and `/context` shows in detail what
 fills the context window.
 
-> 💡 **Tip.** **Checkpoint**: you can name the files the model opened for question 3, and say what
-> its searches found for question 7.
+> 💡 **Tip.** **Checkpoint**: you can name the files the model opened for question 3, you found in
+> its source the sentence that answers it, and you can say what its searches found for question 7.
 
 ### Think about it
 
 In mode B, nobody picked. In the RAG, a search engine picked. **Who picks in mode C, and how can
 you check it?**
 
-> **You built** a chatbot that goes to look for what it needs, and shows each step. **Reused in** a
-> chatbot folder of your own: [OpenCode guide, Part 4](https://github.com/Youth-AI-Lab/yal-opencode-guide#part-4---the-knowledge).
+> **You built** a chatbot that goes to look for what it needs, and shows each step. **Reused in** your
+> chatbot in Open WebUI, at the end of this workshop: it searches its documents itself, with the
+> same idea ([Part 5, Step 2](#step-2---your-chatbot-in-open-webui)). Another way, without Claude
+> Code: [OpenCode guide, Part 4](https://github.com/Youth-AI-Lab/yal-opencode-guide#part-4---the-knowledge).
 
 ---
 
@@ -666,9 +674,10 @@ would otherwise repeat by hand, and they hand you the sources to decide.
 **What goes in the system prompt, and what goes in a skill?** (Hint: what must the chatbot do for
 every answer, and what only for one kind of request?)
 
-> **You built** a skill. **Reused in** the skills of an OpenCode chatbot
-> ([OpenCode guide, Part 5 - Skills](https://github.com/Youth-AI-Lab/yal-opencode-guide#part-5---skills)),
-> and in any agent built on the same idea.
+> **You built** a skill. **Reused in** your chatbot in Open WebUI, which receives it with its
+> instructions ([Part 5, Step 2](#step-2---your-chatbot-in-open-webui)), and in any agent built on
+> the same idea. Another way, without Claude Code: the skills of an OpenCode chatbot
+> ([OpenCode guide, Part 5 - Skills](https://github.com/Youth-AI-Lab/yal-opencode-guide#part-5---skills)).
 
 ---
 
