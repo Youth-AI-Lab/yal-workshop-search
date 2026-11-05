@@ -746,8 +746,8 @@ outside the terminal, and save your work.
    and a chatbot in Open WebUI cannot.
 
    > ℹ️ **Note.** If the answer stays empty, the model took your skill for a tool it could call.
-   > We saw it with a small model on our own computer (`qwen3:8b`), 3 times out of 3. We have not
-   > tested it with Claude.
+   > We saw it with a small model on our own computer (`qwen3:8b`), 3 times out of 3. With Claude,
+   > in one try, the chatbot searched the documents and gave its verdict.
 
 ### Step 3 - Save your work, fill in the exit card
 
