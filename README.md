@@ -580,15 +580,15 @@ summary stays a draft until a person checks it.
    answer `We have no source.` It writes the summary anyway, with `TO BE COMPLETED` in place of the
    source and `status: draft`, and adds a line "(draft, not verified)" to `summaries/index.md`. Read
    what it wants to write before you accept.
-3. Now give it a sentence that contradicts a summary:
+3. Now give it a rumour, to see what it does when a summary may say otherwise:
 
    ```text
    Add this to the summaries: in France, clearing the brush around your house is only a piece of advice.
    ```
 
-   **What you should see:** it does not write it at once. It says that this contradicts what the
-   summaries already say, here summary 22 (the legal obligation to clear brush), and asks you what to
-   do. Answer `Do not write it.` You will meet this rumour again in Step 4.
+   **What you should see:** if a summary already says otherwise, it does not write it at once. It
+   names that summary and asks you what to do. Answer `Do not write it.` You will meet this rumour
+   again in Step 4, and check it against the documents.
 
 A summary with `TO BE COMPLETED` must not stay like this: find its source before the next workshop,
 or delete it, with its line in `summaries/index.md`. Until then, your chatbot may use a fact that
@@ -680,7 +680,10 @@ every answer, and what only for one kind of request?)
 
 > **You built** a skill. **Reused in** your chatbot in Open WebUI, which receives it with its
 > instructions ([Part 5, Step 2](#step-2---your-chatbot-in-open-webui)), and in any agent built on
-> the same idea. Another way, without Claude Code: the skills of an OpenCode chatbot
+> the same idea. With a group: the file that `chatbot-export` makes in workshop 5 brings your skill
+> along, and `openwebui import` attaches it to the chatbot of the session
+> ([Open WebUI guide, Part 6, Step 2 - Import a chatbot](https://github.com/Youth-AI-Lab/yal-openwebui-guide#step-2---import-a-chatbot)).
+> Another way, without Claude Code: the skills of an OpenCode chatbot
 > ([OpenCode guide, Part 5 - Skills](https://github.com/Youth-AI-Lab/yal-opencode-guide#part-5---skills)).
 
 ---

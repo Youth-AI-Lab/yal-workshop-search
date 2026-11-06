@@ -23,7 +23,8 @@ Full page: [README.md](README.md). Setup and common problems: [SETUP.md](SETUP.m
 
 1. `workshop C`. First time: keep the theme (Enter); to trust the folder, **down arrow** to
    `Yes, I trust this folder`, Enter (Enter alone closes it: type `workshop C` again).
-2. Question 3: **Ctrl+O** to see each step (again to come back). Look at the gauge.
+2. Question 3: **Ctrl+O** to see each step (again to come back). Open the file it read in
+   `corpus/text/`, **Ctrl+F** `5 h`: same levels and hours as the answer? Look at the gauge.
 3. Question 7: which documents does it find? What does it say? `Ctrl+C` twice.
 
 ## 3. Let a document in (35 min)
@@ -43,10 +44,11 @@ Full page: [README.md](README.md). Setup and common problems: [SETUP.md](SETUP.m
 1. Read `.claude/skills/summarize/SKILL.md`: name, description, steps, rules.
 2. In `workshop C`: `Add this to the summaries: <a fact of your territory, never about a person>` →
    `Skill(source-note)` asks for the source (none: `TO BE COMPLETED`, draft). Then `Add this to the summaries:
-   in France, clearing the brush around your house is only a piece of advice.` → it names summary 22 and asks you.
+   in France, clearing the brush around your house is only a piece of advice.` → if a summary says otherwise, it names it and asks you.
 3. Create `.claude/skills/<name>/SKILL.md` (example `rumour-check` in the README).
-4. Leave and start `workshop C` again. A request that should trigger it (`Skill(<name>)`), and
-   `Hello, who are you?`, which should not. After each change: save, leave, start again.
+4. Leave and start `workshop C` again. A request that should trigger it (`Skill(<name>)`; for `rumour-check`,
+   then a search: open the document it cites, does it say so?), and `Hello, who are you?`, which should
+   not. After each change: save, leave, start again.
 5. Leave the conversation (`Ctrl+C` twice).
 
 ## 5. Closing (10 min)
