@@ -131,8 +131,12 @@ second terminal.
 > shows the same kind of search in a chatbot folder.
 
 > 💡 **If your key starts with `sk-or-` (OpenRouter).** Paste it in `workshop-login`, with no option,
-> and read [SETUP.md, With an OpenRouter key](SETUP.md#with-an-openrouter-key). Today, `openwebui chatbot`,
-> and skills or Open WebUI with the default model, DeepSeek V4 Flash: (not tested). Before anything
+> and read [SETUP.md, With an OpenRouter key](SETUP.md#with-an-openrouter-key). `openwebui chatbot` and
+> a skill in Open WebUI with the default model, DeepSeek V4 Flash, were tried once on 2026-11-05, on a
+> laptop and not in a Codespace: the skill searched the documents and gave a verdict with its quotes,
+> but in French, to a rumour asked in English. In the terminal, one try on 2026-11-05: `summarize`
+> wrote a draft without its check table, and `validate-summary` and `source-note` wrote nothing: check
+> that the files are there. Before anything
 > that young people wrote goes through OpenRouter, read
 > [Young people and OpenRouter](SETUP.md#young-people-and-openrouter).
 
